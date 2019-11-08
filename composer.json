@@ -1,0 +1,13 @@
+{
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    },
+    "require": {
+         "guoliang/upc":"dev-master"
+    
+    },
+    "minimum-stability": "dev"
+}

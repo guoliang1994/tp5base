@@ -1,0 +1,191 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d4d9df4afc9786784ff43d08d4d43477",
+    "packages": [
+        {
+            "name": "guoliang/upc",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DarkToLight/upc.git",
+                "reference": "69e377f7b9140d036fc0836864a4c996b2b5f117"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DarkToLight/upc/zipball/69e377f7b9140d036fc0836864a4c996b2b5f117",
+                "reference": "69e377f7b9140d036fc0836864a4c996b2b5f117",
+                "shasum": ""
+            },
+            "require": {
+                "psr/log": "^1.1",
+                "tp51/think-orm": "dev-master",
+                "tp51/think-validate": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "upc\\": "src"
+                },
+                "files": [
+                    "src/config/database.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "guoliang",
+                    "email": "761297884@qq.com"
+                }
+            ],
+            "description": "upc",
+            "keywords": [
+                "rbac"
+            ],
+            "time": "2019-05-22T01:08:16+00:00"
+        },
+        {
+            "name": "psr/log",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "c4421fcac1edd5a324fda73e589a5cf96e52ffd0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/c4421fcac1edd5a324fda73e589a5cf96e52ffd0",
+                "reference": "c4421fcac1edd5a324fda73e589a5cf96e52ffd0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2018-11-21T13:42:00+00:00"
+        },
+        {
+            "name": "tp51/think-orm",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DarkToLight/think-orm.git",
+                "reference": "f49e916cd4a9d3c772a6620d6d47c5501752e527"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DarkToLight/think-orm/zipball/f49e916cd4a9d3c772a6620d6d47c5501752e527",
+                "reference": "f49e916cd4a9d3c772a6620d6d47c5501752e527",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "tp51\\": "src"
+                },
+                "files": [
+                    "src/config.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "liu21st",
+                    "email": "liu21st@gmail.com"
+                }
+            ],
+            "description": "think orm",
+            "keywords": [
+                "database",
+                "orm"
+            ],
+            "time": "2019-05-14T02:57:46+00:00"
+        },
+        {
+            "name": "tp51/think-validate",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DarkToLight/think-validate.git",
+                "reference": "ea8b0963f7035b3b933464fe7747cb7827fe3499"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DarkToLight/think-validate/zipball/ea8b0963f7035b3b933464fe7747cb7827fe3499",
+                "reference": "ea8b0963f7035b3b933464fe7747cb7827fe3499",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "tp51\\": "src"
+                },
+                "files": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "liu21st",
+                    "email": "liu21st@gmail.com"
+                }
+            ],
+            "description": "think validate",
+            "time": "2019-05-14T01:31:27+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "guoliang/upc": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

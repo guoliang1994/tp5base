@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>登录</title>
+		<link rel="stylesheet" href="/static/main/plugins/layui/css/layui.css" media="all" />
+		<link rel="stylesheet" href="/static/main/css/login.css" />
+		<link rel="stylesheet" href="/static/main/plugins/font-awesome/css/font-awesome.min.css">
+	</head>
+	<body>
+		<div class="header">
+<!-- 			<img src="/static/main/images/logo.png" width="300" />
+ -->		</div>
+		<div class="login-box">
+			<header>
+				<h1>欢迎使用</h1>
+			</header>
+			<div class="login-main">
+				<form class="layui-form">
+					<div class="layui-form-item">
+						<label class="login-icon">
+							<i class="layui-icon">&#xe612;</i>
+						</label>
+						<input type="text"  class="layui-input" id="username" lay-verify="username" autocomplete="off" placeholder="请输入用户名">
+					</div>
+					<div class="layui-form-item">
+						<label class="login-icon">
+							<i class="layui-icon">&#xe642;</i>
+						</label>
+						<input type="password" class="layui-input" id="password" lay-verify="password" autocomplete="off" placeholder="请输入密码">
+					</div>
+					<div class="layui-form-item">
+						<button class="layui-btn" lay-submit lay-filter="subBtn" style="width:100%">登 录</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="footer">
+			<p>Copyright © 伟星管水 <i class="fa fa-phone" aria-hidden="true"></i>:18305283532</p>
+		</div>
+		<script type="text/javascript" src="/static/main/plugins/layui/layui.js"></script>
+		<script>
+				layui.config({
+					base: '/static/main/js/' //假设这是test.js所在的目录
+				});		
+				layui.use(['layer', 'form'], function() {
+				var form = layui.form,
+					layer = layui.layer,
+					$ = layui.jquery;
+				//cookie处理
+ 				//if(typeof($.cookie('username')) != 'undefined' && typeof($.cookie('session_id')) != 'undefined' ){
+					//location.href = "{:url('Main/index')}";
+				//}
+				form.verify({
+					username: function(value, item){
+						if(value.length < 1){
+						  return '用户名不能为空！';
+						}
+					},
+					password: function(value, item){
+						if(value.length < 1){
+						  return '密码不能为空！';
+						}
+					}
+				});
+				form.on('submit(subBtn)', function(data){
+					var offsetTop = $('.login-box').offset().top;
+					var offsetLeft = $('.login-box').offset().left;
+					var center = $('.login-box').width()/2 - 10;
+					var index = layer.load(2, {
+						'offset': [offsetTop + 150, (offsetLeft + center)]
+					});
+					$('.login-box').css('opacity','0.6');
+					$('.layui-btn').text('正在登录...');				
+					$.ajax({
+						type:'post',
+						url : '{:url("gateway/guard/login")}',
+						dataType : 'json',
+						data:{'account':$('#username').val(),'password':$('#password').val()},
+						success : function(data){		
+							if(data.code == 1){
+								setTimeout(function(){
+									location.href = "{:url('/admin/main')}";
+								},1000);
+							}else{
+								layer.close(index);
+								$('.login-box').css('opacity','1');
+								$('.layui-btn').text('登 录');								
+								layer.alert(data.msg, {
+									title : '提示',
+									icon : data.code,
+								});
+							}
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown){
+							layer.close(index);
+							$('.login-box').css('opacity','1');
+							$('.layui-btn').text('登 录');	
+							layer.alert('提交失败,请重试！', {
+								title : '提示',
+								icon : 0,
+							});
+						}		
+					});
+					return false;
+				});
+				$('#username').focus(function(){
+					$(this).siblings().css('color', '#ff7200');
+				}).blur(function(){
+					$(this).siblings().css('color', '#cccccc');
+				});
+				$('#password').focus(function(){
+					$(this).siblings().css('color', '#ff7200');
+				}).blur(function(){
+					$(this).siblings().css('color', '#cccccc');
+				});
+				$('#verifyCode').focus(function(){
+					$(this).siblings().css('color', '#ff7200');
+				}).blur(function(){
+					$(this).siblings().css('color', '#cccccc');
+				});	
+				$('.verifyImg').click(function () {
+					$('#verifyImg').attr('src', $('#verifyImg').attr("src") + '?' + Math.random());
+					if($('#verifyCode').val() != ''){
+						$('#verifyCheckImg').html('&#x1007;').css('color', '#FF5722');
+					}
+				});	
+				$('#verifyCode').bind('input propertychange', function() {
+					$.ajax({
+						type:'post',
+						url : '{:url("Index/verifyCheck")}',
+						dataType : 'json',
+						data:{'verifyCode':$('#verifyCode').val()},
+						success : function(data){		
+							if(data.flag){
+								$('#verifyCheckImg').html('&#xe616;').css('color', '#2cc448');
+							}else{
+								$('#verifyCheckImg').html('&#x1007;').css('color', '#d81e06');
+							}
+						},
+						error : function(XMLHttpRequest, textStatus, errorThrown){
+							layer.alert('验证码加载失败,请重试！', {
+								title : '提示',
+								icon : 0,
+							});
+						}
+					}); 
+				});	
+			});
+		</script>
+	</body>
+</html>
